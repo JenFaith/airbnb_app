@@ -18,6 +18,9 @@ def create_app():
         """
         Controls main, welcome page.
         """
-        return "Yep, app is working! :D"
+        if request.method == "POST":
+            print(request.form.getlist('feature_checkbox'))
+            return "Done"
+        return render_template('index.html')
 
     return app
