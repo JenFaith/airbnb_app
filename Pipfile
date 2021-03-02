@@ -13,6 +13,8 @@ jinja2 = "*"
 jupyter = "*"
 gunicorn = "*"
 matplotlib = "*"
+requests = "*"
+ipykernel = "*"
 seaborn = "*"
 
 [dev-packages]
