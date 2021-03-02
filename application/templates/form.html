@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/run_model">
+        <h1>Airbnb price predicter</h1>
+        <p>If needed, give users instructions here</p><br>
+        Bedrooms <input type = "number" name = "bedrooms" min = "0" max = "10" step = "1"  ><br>
+        Bathrooms <input type = "number" name = "bathrooms" min = "0" max = "6" step = "0.5" ><br>
+        Accomodates <input type = "number" name = "accomodates" min = "0" max = "30" step = "1" ><br><br>
+
+
+        Cleaning Fee <input type="checkbox" value="clean_fee" name="feature_checkbox" ><br>
+        Wi-Fi <input type="checkbox" value="wifi" name="feature_checkbox" ><br>
+        A/C <input type="checkbox" value="ac" name="feature_checkbox"><br>
+        Kitchen <input type="checkbox" value="kitchen" name="feature_checkbox"><br>
+        Heating <input type="checkbox" value="heat" name="feature_checkbox"><br>
+        Family Friendly <input type="checkbox" value="family_friendly" name="feature_checkbox"><br>
+        Essentials <input type="checkbox" value="essentials" name="feature_checkbox"><br>
+        Hair Dryer <input type="checkbox" value="hair_dryer" name="feature_checkbox"><br>
+        Iron <input type="checkbox" value="iron" name="feature_checkbox"><br>
+        Smoke Detector <input type="checkbox" value="smoke_detector" name="feature_checkbox"><br>
+        Shampoo <input type="checkbox" value="shampoo" name="feature_checkbox"><br>
+        Hangers <input type="checkbox" value="hangers" name="feature_checkbox"><br>
+        Fire Extinguisher <input type="checkbox" value="fire_ext" name="feature_checkbox"><br>
+        Laptop Friendly <input type="checkbox" value="laptop_friendly" name="feature_checkbox"><br> 
+        First-Aid Kit <input type="checkbox" value="fakit" name="feature_checkbox"><br>
+        Indoor Fireplace <input type="checkbox" value="indoor_fire" name="feature_checkbox"><br> 
+        TV <input type="checkbox" value="tv" name="feature_checkbox"><br>
+        Cable TV <input type="checkbox" value="cable_tv" name="feature_checkbox"><br>
+        Elevator <input type="checkbox" value="elevator" name="feature_checkbox"><br><br>
+        <input type="SUBMIT" size="50">
+    </form>
+</body>
+</html>
