@@ -2,7 +2,6 @@
 import pandas as pd
 from flask import Flask, render_template, request
 # from .models import jen_model
-
 # Instantiate Application
 def create_app():
     """
@@ -29,32 +28,58 @@ def create_app():
         # if user goes to /form and hits submit, they go to this page!
         # in here user input gets stored into to_predict, and then to_predict gets run in model
         if request.method == 'POST':
-            bedrooms = int(request.values["bedrooms"])
-            bathrooms = float(request.values["bathrooms"])
+            property_type = str(request.values["prop"])
+            room_type = str(request.values["room_type"])
             accomodates = int(request.values["accomodates"])
+            bathrooms = float(request.values["bathrooms"])
+            cancellation_policy = str(request.values["cancellation"])
+            city = str(request.values["city"])
+            host_since = str(request.values["host_since"])
+            review_scores_rating = int(request.values["review_rating"])
+            bedrooms = int(request.values["bedrooms"])
+            beds = int(request.values["beds"])
             # We will be adding a few more dropdowns above
             amenities = request.form.getlist('feature_checkbox')  # need to get this to print out T/F list
             #basics = 
-            to_predict = [bedrooms, bathrooms, accomodates, amenities]
+            to_predict = [property_type, room_type, accomodates,
+                          bathrooms, cancellation_policy, city, host_since,
+                          review_scores_rating, bedrooms, beds, amenities]
             message = model_output(to_predict)
         return message
-    
-# FAKE RESULT =  [[4, 1.5], 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     def model_output(user_input):
         mod_input = []
         # for i in range(0,2):
         #     mod_input.append(to_predict.iloc[i])
         # list of ammenities
-        all_ammenities = [
-            "clean_fee","wifi","ac","kitchen","heat","family_friendly",
-            "essentials","hair_dryer","iron","smoke_detector",
-            "shampoo","hangers","fire_ext","laptop_friendly",
-            "first_aid","indoor_fire","tv","cable_tv","elevator"]
+        # all_ammenities = [
+        #     "instant","host_pic","host_id",
+        #     "clean_fee","wifi","ac","kitchen","heat","family_friendly",
+        #     "essentials","hair_dryer","iron","smoke_detector",
+        #     "shampoo","hangers","fire_ext","laptop_friendly",
+        #     "first_aid","indoor_fire","tv","cable_tv","elevator"]
+        all_amenities = [
+            "instant_bookable",
+            "host_has_profile_pic",
+            "host_identity_verified",
+            "cleaning_fee",
+            "Wireless Internet",
+            "Air conditioning",
+            "Kitchen",
+            "Heating",
+            "Family/kid friendly",
+            "Hair dryer",
+            "Iron",
+            "Shampoo",
+            "Fire extinguisher",
+            "Laptop friendly workspace",
+            "Indoor fireplace",
+            "TV",
+            "Cable TV"]
         # Append unchanging variables to list first
-        mod_input.extend(user_input[:2])
-        input = user_input[3]
+        mod_input.extend(user_input[:9])
+        input = user_input[10]
         # For loop through conditional varibles 
-        for option in all_ammenities:
+        for option in all_amenities:
             if any(option in s for s in input):
                 mod_input.append(1)
             else:
