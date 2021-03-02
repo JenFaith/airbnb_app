@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+{% extends "base.html" %}
+{% block body %}
 <body>
-    <form method="POST" action="/run_model">
-        <h1>Airbnb price predicter</h1>
-        <p>If needed, give users instructions here</p><br>
+    <h1>Airbnb price predicter</h1>
+    <p>If needed, give users instructions here</p><br>
+    <form id = 'user_input' autocomplete = "off" method="post" action="/run_model">
+        
         Bedrooms <input type = "number" name = "bedrooms" min = "0" max = "10" step = "1"  ><br>
         Bathrooms <input type = "number" name = "bathrooms" min = "0" max = "6" step = "0.5" ><br>
         Accomodates <input type = "number" name = "accomodates" min = "0" max = "30" step = "1" ><br><br>
-
 
         Cleaning Fee <input type="checkbox" value="clean_fee" name="feature_checkbox" ><br>
         Wi-Fi <input type="checkbox" value="wifi" name="feature_checkbox" ><br>
@@ -36,5 +30,4 @@
         Elevator <input type="checkbox" value="elevator" name="feature_checkbox"><br><br>
         <input type="SUBMIT" size="50">
     </form>
-</body>
-</html>
+{% endblock %}
