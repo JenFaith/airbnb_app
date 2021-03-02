@@ -15,6 +15,7 @@ gunicorn = "*"
 matplotlib = "*"
 requests = "*"
 ipykernel = "*"
+seaborn = "*"
 
 [dev-packages]
 
