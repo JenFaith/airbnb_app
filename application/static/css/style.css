@@ -1,1 +1,10 @@
 /* Basic CSS Styling for Application */
+
+body {
+    background-color: #CFE8EF;
+    margin: auto;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+}
