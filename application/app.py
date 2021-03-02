@@ -33,8 +33,9 @@ def create_app():
             bathrooms = float(request.values["bathrooms"])
             accomodates = int(request.values["accomodates"])
             # We will be adding a few more dropdowns above
-            ammenities = request.form.getlist('feature_checkbox')  # need to get this to print out T/F list
-            to_predict = [bedrooms, bathrooms, accomodates, ammenities]
+            amenities = request.form.getlist('feature_checkbox')  # need to get this to print out T/F list
+            #basics = 
+            to_predict = [bedrooms, bathrooms, accomodates, amenities]
             message = model_output(to_predict)
         return message
     
@@ -50,7 +51,7 @@ def create_app():
             "shampoo","hangers","fire_ext","laptop_friendly",
             "first_aid","indoor_fire","tv","cable_tv","elevator"]
         # Append unchanging variables to list first
-        mod_input.append(user_input[:2])
+        mod_input.extend(user_input[:2])
         input = user_input[3]
         # For loop through conditional varibles 
         for option in all_ammenities:
