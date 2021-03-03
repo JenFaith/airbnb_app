@@ -2,93 +2,161 @@
 {% block body %}
 
 <body>
-    <h1>Airbnb price predicter</h1>
-    <p>If needed, give users instructions here</p><br>
     <form id='user_input' autocomplete="off" method="post" action="/run_model">
-        Bedrooms <input type="number" name="bedrooms" min="0" max="10" step="1" value="0"><br>
-        Beds<input type="number" name="beds" min="0" max="16" step="1" value="0"><br>
-        Bathrooms <input type="number" name="bathrooms" min="0" max="6" step="0.5" value="0"><br>
-        Review Score Rating <input type="number" name="review_rating" min="0" max="100" step="10" value="0"><br>
-        Host Since (YYYY/MM/DD) <input type="date" id="start" name="host_since" value="2021-01-01"><br><br>
-        <label for="cancellation">Cancellation Policy</label>
-        <select id="cancellation" name="cancellation">
-            <option value="strict">Strict</option>
-            <option value="moderate">Moderate</option>
-            <option value="flexible">Flexible</option>
-            <option value="super_strict_30">Super Strict (30)</option>
-            <option value="super_strict_60">Super Strict (60)</option>
-        </select><br>
-        <label for="city">City</label>
-        <select id="city" name="city">
-            <option value="DC">DC</option>
-            <option value="LA">LA</option>
-            <option value="NYC">NYC</option>
-            <option value="SF">SF</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Boston">Boston</option>
-        </select><br>
-        <label for="prop">Property Type</label>
-        <select id="prop" name="prop">
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Condominium">Condominium</option>
-            <option value="Loft">Loft</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Townhouse">Townhouse</option>
-            <option value="Hostel">Hostel</option>
-            <option value="Guest suite">Guest suite</option>
-            <option value="Bed & Breakfast">Bed & Breakfast</option>
-            <option value="Bungalow">Bungalow</option>
-            <option value="Guesthouse">Guesthouse</option>
-            <option value="Dorm">Dorm</option>
-            <option value="Camper/RV">Camper/RV</option>
-            <option value="Boutique hotel">Boutique hotel</option>
-            <option value="Villa">Villa</option>
-            <option value="Timeshare">Timeshare</option>
-            <option value="In-law">In-law</option>
-            <option value="Boat">Boat</option>
-            <option value="Serviced apartment">Serviced apartment</option>
-            <option value="Castle">Castle</option>
-            <option value="Cabin">Cabin</option>
-            <option value="Treehouse">Treehouse</option>
-            <option value="Tipi">Tipi</option>
-            <option value="Vacation home">Vacation home</option>
-            <option value="Tent">Tent</option>
-            <option value="Hut">Hut</option>
-            <option value="Casa particular">Casa particular</option>
-            <option value="Chalet">Chalet</option>
-            <option value="Yurt">Yurt</option>
-            <option value="Earth House">Earth House</option>
-            <option value="Train">Train</option>
-            <option value="Cave">Cave</option>
-            <option value="Lighthouse">Lighthouse</option>
-            <option value="Island">Island</option>
-            <option value="Other">Other</option>
-        </select><br>
-        <label for="room_type">Room Type</label>
-        <select id="room_type" name="room_type">
-            <option value="Entire home/apt">Entire home/apt</option>
-            <option value="Private room">Private room</option>
-            <option value="Shared room">Shared room</option>
-        </select><br>
-        <br><br>
-        Instant Booking?<input type="checkbox" value="instant" name="feature_checkbox"><br>
-        Host Profile Picture? <input type="checkbox" value="host_pic" name="feature_checkbox"><br>
-        Host ID Verified? <input type="checkbox" value="host_id" name="feature_checkbox"><br>
-        Cleaning Fee <input type="checkbox" value="cleaning_fee" name="feature_checkbox"><br>
-        Wi-Fi <input type="checkbox" value="Wireless Internet" name="feature_checkbox"><br>
-        A/C <input type="checkbox" value="Air conditioning" name="feature_checkbox"><br>
-        Kitchen <input type="checkbox" value="Kitchen" name="feature_checkbox"><br>
-        Heating <input type="checkbox" value="Heating" name="feature_checkbox"><br>
-        Family Friendly <input type="checkbox" value="Family/kid friendly" name="feature_checkbox"><br>
-        Hair Dryer <input type="checkbox" value="Hair dryer" name="feature_checkbox"><br>
-        Iron <input type="checkbox" value="Iron" name="feature_checkbox"><br>
-        Shampoo <input type="checkbox" value="Shampoo" name="feature_checkbox"><br>
-        Fire Extinguisher <input type="checkbox" value="fire_ext" name="feature_checkbox"><br>
-        Laptop Friendly <input type="checkbox" value="laptop_friendly" name="feature_checkbox"><br>
-        Indoor Fireplace <input type="checkbox" value="Indoor fireplace" name="feature_checkbox"><br>
-        TV <input type="checkbox" value="tv" name="feature_checkbox"><br>
-        Cable TV <input type="checkbox" value="Cable TV" name="feature_checkbox"><br><br>
-        <input type="SUBMIT" size="50">
+        <div class="w3-row-padding" style="margin:0 -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label>Bedrooms</label>
+              <input class="w3-input w3-border" type="number" name="bedrooms" min="0" max="10" step="1" value="0" required>
+            </div>
+            <div class="w3-half">
+              <label>Beds</label>
+              <input class="w3-input w3-border" type="number" name="beds" min="0" max="16" step="1" value="0" required>
+            </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label>Bathrooms</label>
+              <input class="w3-input w3-border" type="number" name="bathrooms" min="0" max="6" step="0.5" value="0">
+            </div>
+            <div class="w3-half">
+              <label></i> Review Score Rating</label>
+            <input class="w3-input w3-border" type="number" name="review_rating" min="0" max="100" step="10" value="0">
+            </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label>Host Since (YYYY/MM/DD)</label>
+              <input class="w3-input w3-border" type="date" id="start" name="host_since" value="2021-01-01">
+            </div>
+            <div class="w3-half">
+                <label for="cancellation">Cancellation Policy</label>
+                <select class="w3-input w3-border" id="cancellation" name="cancellation">
+                    <option value="strict">Strict</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="flexible">Flexible</option>
+                    <option value="super_strict_30">Super Strict (30)</option>
+                    <option value="super_strict_60">Super Strict (60)</option>
+                </select>
+            </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+            <div class="w3-half w3-margin-bottom">
+                <label for="city">City</label>
+                <select class="w3-input w3-border" id="city" name="city">
+                    <option value="DC">DC</option>
+                    <option value="LA">LA</option>
+                    <option value="NYC">NYC</option>
+                    <option value="SF">SF</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Boston">Boston</option>
+                </select>
+            </div>
+            <div class="w3-half">
+                <label for="prop">Property Type</label>
+                <select class="w3-input w3-border" id="prop" name="prop">
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="Condominium">Condominium</option>
+                    <option value="Loft">Loft</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Townhouse">Townhouse</option>
+                    <option value="Hostel">Hostel</option>
+                    <option value="Guest suite">Guest suite</option>
+                    <option value="Bed & Breakfast">Bed & Breakfast</option>
+                    <option value="Bungalow">Bungalow</option>
+                    <option value="Guesthouse">Guesthouse</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Camper/RV">Camper/RV</option>
+                    <option value="Boutique hotel">Boutique hotel</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Timeshare">Timeshare</option>
+                    <option value="In-law">In-law</option>
+                    <option value="Boat">Boat</option>
+                    <option value="Serviced apartment">Serviced apartment</option>
+                    <option value="Castle">Castle</option>
+                    <option value="Cabin">Cabin</option>
+                    <option value="Treehouse">Treehouse</option>
+                    <option value="Tipi">Tipi</option>
+                    <option value="Vacation home">Vacation home</option>
+                    <option value="Tent">Tent</option>
+                    <option value="Hut">Hut</option>
+                    <option value="Casa particular">Casa particular</option>
+                    <option value="Chalet">Chalet</option>
+                    <option value="Yurt">Yurt</option>
+                    <option value="Earth House">Earth House</option>
+                    <option value="Train">Train</option>
+                    <option value="Cave">Cave</option>
+                    <option value="Lighthouse">Lighthouse</option>
+                    <option value="Island">Island</option>
+                    <option value="Other">Other</option>
+                </select><br>
+            </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+            <div class="w3-half w3-margin-bottom">
+                <label for="room_type">Room Type</label>
+                <select class="w3-input w3-border" id="room_type" name="room_type">
+                    <option value="Entire home/apt">Entire home/apt</option>
+                    <option value="Private room">Private room</option>
+                    <option value="Shared room">Shared room</option>
+                </select><br>
+            </div>
+        </div>
+        <div>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="instant" name="feature_checkbox">Instant Booking   
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="host_pic" name="feature_checkbox">Host Profile Picture   
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="host_id" name="feature_checkbox">Host ID Verified   
+            <label class="checkbox-inline">
+              <input type="checkbox" value="cleaning_fee" name="feature_checkbox">Cleaning Fee   
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Wireless Internet" name="feature_checkbox">Wi-Fi    
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="tv" name="feature_checkbox">TV   
+            </label>
+                </div>
+        <div>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="Air conditioning" name="feature_checkbox">A/C
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Kitchen" name="feature_checkbox">Kitchen
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Heating" name="feature_checkbox">Heating
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Family/kid friendly" name="feature_checkbox">Family Friendly
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Hair dryer" name="feature_checkbox">Hair Dryer
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="Cable TV" name="feature_checkbox">Cable TV   
+            </label>
+                </div>
+        <div>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="Iron" name="feature_checkbox">Iron
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Shampoo" name="feature_checkbox">Shampoo
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="fire_ext" name="feature_checkbox">Fire Extinguisher
+            <label class="checkbox-inline">
+              <input type="checkbox" value="laptop_friendly" name="feature_checkbox">Laptop Friendly
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Indoor fireplace" name="feature_checkbox">Indoor Fireplace
+            </label>
+                </div>
+            <br><br>
+        <button class="w3-button w3-dark-grey" type="SUBMIT"><i class="fa fa-search w3-margin-right"></i> Find Price</button>
     </form>
     {% endblock %}

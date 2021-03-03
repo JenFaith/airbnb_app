@@ -16,7 +16,7 @@ def create_app():
     """
     app = Flask(__name__)
     load_model = load('finalized_model.sav')
-
+    
     # as easy as changing path to /form and make a link to it in main page
     @app.route('/')
     def form():
@@ -83,5 +83,7 @@ def create_app():
                 mod_input.append(1)
             else:
                 mod_input.append(0)
-        return '${}'.format(get_prediction(mod_input, load_model))
+        price='${}'.format(get_prediction(mod_input, load_model))
+        return render_template('results.html', prediction=price)
+
     return app
