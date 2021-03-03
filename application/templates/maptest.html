@@ -1,0 +1,32 @@
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="static/css/style.css"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+
+</html>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3RlcGhlbnNwaWNlciIsImEiOiJja2xzcG9sdHUxOXZ4Mm9vMDZpMWd6eWNzIn0.1Y3oUw-reXo8XF7JcjzJPw';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/stephenspicer/cklsq1n4d2fon28nq4gj20pnv', // style URL
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 9 // starting zoom
+});
+</script>
