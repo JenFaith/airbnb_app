@@ -5,8 +5,8 @@ from joblib import load
 
 from .predict import get_prediction
 
-
 # Instantiate Application
+
 
 def create_app():
     """
@@ -17,9 +17,11 @@ def create_app():
     app = Flask(__name__)
     load_model = load('finalized_model.sav')
 
-    @app.route('/') # as easy as changing path to /form and make a link to it in main page
+    # as easy as changing path to /form and make a link to it in main page
+    @app.route('/')
     def form():
         return render_template('form.html')
+
     @app.route('/run_model', methods=['POST', 'GET'])
     def data():
         # if user types in /run_model they get this error message
@@ -38,19 +40,19 @@ def create_app():
             bedrooms = int(request.values["bedrooms"])
             beds = int(request.values["beds"])
             # We will be adding a few more dropdowns above
-            amenities = request.form.getlist('feature_checkbox')  # need to get this to print out T/F list
-            #basics = 
-            to_predict = [property_type, room_type, bathrooms, 
+            # need to get this to print out T/F list
+            amenities = request.form.getlist('feature_checkbox')
+            # basics =
+            to_predict = [property_type, room_type, bathrooms,
                           cancellation_policy, city, host_since,
-                          review_scores_rating, bedrooms, beds, 
+                          review_scores_rating, bedrooms, beds,
                           amenities]
 
             message = model_output(to_predict)
         return message
 
-
     def model_output(user_input):
-        
+
         mod_input = []
 
         all_amenities = [
@@ -71,15 +73,15 @@ def create_app():
             "Indoor fireplace",
             "TV",
             "Cable TV"]
-        
+
         # Append unchanging variables to list first : check indexing there?
-        mod_input.extend(user_input[:8])
+        mod_input.extend(user_input[:9])
         input = user_input[9]
-        # For loop through conditional varibles 
+        # For loop through conditional varibles
         for option in all_amenities:
             if any(option in s for s in input):
                 mod_input.append(1)
             else:
                 mod_input.append(0)
-        return get_prediction(mod_input)
+        return '${}'.format(get_prediction(mod_input, load_model))
     return app
