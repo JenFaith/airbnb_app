@@ -2,12 +2,6 @@
 
 import numpy as np
 import pandas as pd
-from joblib import load
-
-# Load model
-# This should be located near the top of the app.create_app function so that
-# the model is loaded only once upon instantiation
-# TODO - Cut and paste into app.create_app
 
 
 def get_prediction(user_data, model):
@@ -93,12 +87,13 @@ def get_prediction(user_data, model):
     # a value even if someone tries to spoof a data point
     try:
         assert len(user_data) == len(
-            feature_order), 'User_data not long enough'
+            feature_order), print(f'Expected user_data to have {len(feature_order)} items')
 
         # dictionary to construct dataframe
         data = {feature: [datum]
                 for feature, datum in zip(feature_order, user_data)}
-        assert len(data) == len(feature_order), 'dictionary size incorrect'
+        assert len(data) == len(feature_order), print(
+            'dictionary size incorrect')
 
         # transform input into dataframe for model prediction
         transformed_input = pd.DataFrame(
@@ -106,7 +101,7 @@ def get_prediction(user_data, model):
 
         # make prediction using model
         prediction = model.predict(transformed_input)
-    except:
+    except Exception:
         print('-----ERROR IN TRANSFORMING INPUT-----')
         prediction = [0]
 
