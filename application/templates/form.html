@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block body %}
+
 <body>
     <h1>Airbnb price predicter</h1>
     <p>If needed, give users instructions here</p><br>
-    <form id = 'user_input' autocomplete = "off" method="post" action="/run_model">
-        Bedrooms <input type = "number" name = "bedrooms" min = "0" max = "10" step = "1"  ><br>
-        Beds<input type = "number" name = "beds" min = "0" max = "16" step = "1"  ><br>
-        Bathrooms <input type = "number" name = "bathrooms" min = "0" max = "6" step = "0.5" ><br>
-        Review Score Rating <input type = "number" name = "review_rating" min = "0" max = "100" step = "10"  ><br>
-        Host Since (YYYY/MM/DD) <input type="date" id="start" name="host_since"><br><br>
+    <form id='user_input' autocomplete="off" method="post" action="/run_model">
+        Bedrooms <input type="number" name="bedrooms" min="0" max="10" step="1" value="0"><br>
+        Beds<input type="number" name="beds" min="0" max="16" step="1" value="0"><br>
+        Bathrooms <input type="number" name="bathrooms" min="0" max="6" step="0.5" value="0"><br>
+        Review Score Rating <input type="number" name="review_rating" min="0" max="100" step="10" value="0"><br>
+        Host Since (YYYY/MM/DD) <input type="date" id="start" name="host_since" value="2021-01-01"><br><br>
         <label for="cancellation">Cancellation Policy</label>
         <select id="cancellation" name="cancellation">
             <option value="strict">Strict</option>
@@ -71,11 +72,11 @@
             <option value="Shared room">Shared room</option>
         </select><br>
         <br><br>
-        Instant Booking?<input type="checkbox" value="instant" name="feature_checkbox" ><br>
-        Host Profile Picture? <input type="checkbox" value="host_pic" name="feature_checkbox" ><br>
-        Host ID Verified? <input type="checkbox" value="host_id" name="feature_checkbox" ><br>          
-        Cleaning Fee <input type="checkbox" value="cleaning_fee" name="feature_checkbox" ><br>
-        Wi-Fi <input type="checkbox" value="Wireless Internet" name="feature_checkbox" ><br>
+        Instant Booking?<input type="checkbox" value="instant" name="feature_checkbox"><br>
+        Host Profile Picture? <input type="checkbox" value="host_pic" name="feature_checkbox"><br>
+        Host ID Verified? <input type="checkbox" value="host_id" name="feature_checkbox"><br>
+        Cleaning Fee <input type="checkbox" value="cleaning_fee" name="feature_checkbox"><br>
+        Wi-Fi <input type="checkbox" value="Wireless Internet" name="feature_checkbox"><br>
         A/C <input type="checkbox" value="Air conditioning" name="feature_checkbox"><br>
         Kitchen <input type="checkbox" value="Kitchen" name="feature_checkbox"><br>
         Heating <input type="checkbox" value="Heating" name="feature_checkbox"><br>
@@ -84,10 +85,10 @@
         Iron <input type="checkbox" value="Iron" name="feature_checkbox"><br>
         Shampoo <input type="checkbox" value="Shampoo" name="feature_checkbox"><br>
         Fire Extinguisher <input type="checkbox" value="fire_ext" name="feature_checkbox"><br>
-        Laptop Friendly <input type="checkbox" value="laptop_friendly" name="feature_checkbox"><br> 
-        Indoor Fireplace <input type="checkbox" value="Indoor fireplace" name="feature_checkbox"><br> 
+        Laptop Friendly <input type="checkbox" value="laptop_friendly" name="feature_checkbox"><br>
+        Indoor Fireplace <input type="checkbox" value="Indoor fireplace" name="feature_checkbox"><br>
         TV <input type="checkbox" value="tv" name="feature_checkbox"><br>
         Cable TV <input type="checkbox" value="Cable TV" name="feature_checkbox"><br><br>
         <input type="SUBMIT" size="50">
     </form>
-{% endblock %}
+    {% endblock %}
