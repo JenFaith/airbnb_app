@@ -44,7 +44,7 @@ def create_app():
                           cancellation_policy, city, host_since,
                           review_scores_rating, bedrooms, beds, 
                           amenities]
-                          
+
             message = model_output(to_predict)
         return message
 
@@ -72,9 +72,9 @@ def create_app():
             "TV",
             "Cable TV"]
         
-        # Append unchanging variables to list first
-        mod_input.extend(user_input[:9])
-        input = user_input[10]
+        # Append unchanging variables to list first : check indexing there?
+        mod_input.extend(user_input[:8])
+        input = user_input[9]
         # For loop through conditional varibles 
         for option in all_amenities:
             if any(option in s for s in input):
