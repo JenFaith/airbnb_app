@@ -1,8 +1,13 @@
 # Import Statements
 import pandas as pd
 from flask import Flask, render_template, request
-# from .models import jen_model
+from joblib import load
+
+from .predict import get_prediction
+
+
 # Instantiate Application
+
 def create_app():
     """
     Function to deploy heroku application.
@@ -10,13 +15,8 @@ def create_app():
     of interractive web application.
     """
     app = Flask(__name__)
-    # Commented out original main page, can change back
-    # @app.route("/", methods = ['GET', 'POST'])
-    # def main_page():
-    #     """
-    #     Controls main, welcome page.
-    #     """
-    #     return "Yep, app is working! :D"
+    load_model = load('finalized_model.sav')
+
     @app.route('/') # as easy as changing path to /form and make a link to it in main page
     def form():
         return render_template('form.html')
@@ -30,7 +30,6 @@ def create_app():
         if request.method == 'POST':
             property_type = str(request.values["prop"])
             room_type = str(request.values["room_type"])
-            accomodates = int(request.values["accomodates"])
             bathrooms = float(request.values["bathrooms"])
             cancellation_policy = str(request.values["cancellation"])
             city = str(request.values["city"])
@@ -41,22 +40,19 @@ def create_app():
             # We will be adding a few more dropdowns above
             amenities = request.form.getlist('feature_checkbox')  # need to get this to print out T/F list
             #basics = 
-            to_predict = [property_type, room_type, accomodates,
-                          bathrooms, cancellation_policy, city, host_since,
-                          review_scores_rating, bedrooms, beds, amenities]
+            to_predict = [property_type, room_type, bathrooms, 
+                          cancellation_policy, city, host_since,
+                          review_scores_rating, bedrooms, beds, 
+                          amenities]
+
             message = model_output(to_predict)
         return message
+
+
     def model_output(user_input):
+        
         mod_input = []
-        # for i in range(0,2):
-        #     mod_input.append(to_predict.iloc[i])
-        # list of ammenities
-        # all_ammenities = [
-        #     "instant","host_pic","host_id",
-        #     "clean_fee","wifi","ac","kitchen","heat","family_friendly",
-        #     "essentials","hair_dryer","iron","smoke_detector",
-        #     "shampoo","hangers","fire_ext","laptop_friendly",
-        #     "first_aid","indoor_fire","tv","cable_tv","elevator"]
+
         all_amenities = [
             "instant_bookable",
             "host_has_profile_pic",
@@ -75,14 +71,15 @@ def create_app():
             "Indoor fireplace",
             "TV",
             "Cable TV"]
-        # Append unchanging variables to list first
-        mod_input.extend(user_input[:9])
-        input = user_input[10]
+        
+        # Append unchanging variables to list first : check indexing there?
+        mod_input.extend(user_input[:8])
+        input = user_input[9]
         # For loop through conditional varibles 
         for option in all_amenities:
             if any(option in s for s in input):
                 mod_input.append(1)
             else:
                 mod_input.append(0)
-        return str(mod_input)
+        return get_prediction(mod_input)
     return app
