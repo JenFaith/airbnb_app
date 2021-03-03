@@ -18,8 +18,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # IMPORT FILES
-train = pd.read_csv("data/archive-2/train.csv", index_col='id')
-test = pd.read_csv("data/archive-2/test.csv", index_col='id')
+train = pd.read_csv("data/train.csv", index_col='id')
+test = pd.read_csv("data/test.csv", index_col='id')
 
 
 def cleaned_dataframe(df):
@@ -40,7 +40,7 @@ def cleaned_dataframe(df):
         
     # drop unnecessary column & columns with no host information
     # neighborhood will be dictated by zip and latitude/longitude
-    df.drop(columns=['amenities', 'first_review', 'last_review', 'host_response_rate', 'neighbourhood'], axis=1, inplace=True)
+    df.drop(columns=['amenities', 'bed_type', 'first_review', 'last_review', 'host_response_rate', 'neighbourhood'], axis=1, inplace=True)
     
     # drop rows with null values in certain columns
     df = df.dropna(axis=0, subset=['bathrooms', 'bedrooms', 'beds'])
@@ -73,11 +73,46 @@ def cleaned_dataframe(df):
     
     
     #drop columns with low correlation
-    df.drop(columns=['latitude', 'longitude', 'Smoke detector', 'number_of_reviews', 'Hangers','First aid kit', 'Elevator in building', 'Essentials', 'zipcode', 'thumbnail_url', 'description', 'name'], axis=1, inplace=True)
+    df.drop(columns=['latitude', 'longitude', 'accommodates', 'Smoke detector', 'number_of_reviews', 'Hangers','First aid kit', 'Elevator in building', 'Essentials', 'zipcode', 'thumbnail_url', 'description', 'name'], axis=1, inplace=True)
+    
+    df = df.reindex(columns=[
+        "log_price",
+        "property_type",
+        "room_type",        
+        "bathrooms",
+        "cancellation_policy",
+        "city",
+        "host_since",
+        "review_scores_rating",
+        "bedrooms",
+        "beds",  
+        "instant_bookable",
+        "host_has_profile_pic",
+        "host_identity_verified",     
+        "cleaning_fee",
+        "Wireless Internet",
+        "Air conditioning",
+        "Kitchen",
+        "Heating",
+        "Family/kid friendly",
+        "Hair dryer",
+        "Iron",
+        "Shampoo",
+        "Fire extinguisher",
+        "Laptop friendly workspace",
+        "Indoor fireplace",
+        "TV",
+        "Cable TV"])  
+    
     return df
+
+
+
 
 # Clean Copy of DF
 trained = cleaned_dataframe(train)
+
+#print(trained.columns)
 
 # Instantiate Model w/ Cleaned Data
 # Split into X, y, train/test

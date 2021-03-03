@@ -7,7 +7,7 @@ from joblib import load
 # Load model
 # This should be located near the top of the app.create_app function so that
 # the model is loaded only once upon instantiation
-model = load('finalized_model.sav')  # TODO - Cut and paste into app.create_app
+load_model = load('finalized_model.sav')  # TODO - Cut and paste into app.create_app
 
 
 def get_prediction(user_data):
@@ -24,25 +24,23 @@ def get_prediction(user_data):
     float
         Prediction in USD per day (e.g. 124.32)
     """
-
+    
     # Feature orders needed for model.predict's input data
     # The columns are required to be in the same order as the data input
-    feature_order = [
+    feature_order = [ 
         "property_type",
         "room_type",
-        "accommodates",
         "bathrooms",
-        "bed_type",
         "cancellation_policy",
-        "cleaning_fee",
         "city",
-        "host_has_profile_pic",
-        "host_identity_verified",
         "host_since",
-        "instant_bookable",
         "review_scores_rating",
         "bedrooms",
-        "beds",
+        "beds",  
+        "instant_bookable",
+        "host_has_profile_pic",
+        "host_identity_verified",     
+        "cleaning_fee",
         "Wireless Internet",
         "Air conditioning",
         "Kitchen",
@@ -62,32 +60,30 @@ def get_prediction(user_data):
     data_types = {
         "property_type":                object,
         "room_type":                    object,
-        "accommodates":                 np.int64,
         "bathrooms":                    np.float64,
-        "bed_type":                     object,
         "cancellation_policy":          object,
-        "cleaning_fee":                 bool,
         "city":                         object,
-        "host_has_profile_pic":         object,
-        "host_identity_verified":       object,
-        "host_since":                   np.int64,
-        "instant_bookable":             object,
-        "review_scores_rating":         object,
+        "host_since":                   np.int64,        
+        "review_scores_rating":         object,       
         "bedrooms":                     np.float64,
         "beds":                         np.float64,
-        "Wireless Internet":            np.int64,
-        "Air conditioning":             np.int64,
-        "Kitchen":                      np.int64,
-        "Heating":                      np.int64,
-        "Family/kid friendly":          np.int64,
-        "Hair dryer":                   np.int64,
-        "Iron":                         np.int64,
-        "Shampoo":                      np.int64,
-        "Fire extinguisher":            np.int64,
-        "Laptop friendly workspace":    np.int64,
-        "Indoor fireplace":             np.int64,
-        "TV":                           np.int64,
-        "Cable TV":                     np.int64,
+        "instant_bookable":             bool,        
+        "host_has_profile_pic":         bool,
+        "host_identity_verified":       bool,
+        "cleaning_fee":                 bool,
+        "Wireless Internet":            bool,
+        "Air conditioning":             bool,
+        "Kitchen":                      bool,
+        "Heating":                      bool,
+        "Family/kid friendly":          bool,
+        "Hair dryer":                   bool,
+        "Iron":                         bool,
+        "Shampoo":                      bool,
+        "Fire extinguisher":            bool,
+        "Laptop friendly workspace":    bool,
+        "Indoor fireplace":             bool,
+        "TV":                           bool,
+        "Cable TV":                     bool,
     }
 
     # dictionary to construct dataframe
@@ -98,7 +94,7 @@ def get_prediction(user_data):
     transformed_input = pd.DataFrame(data).astype(data_types)[feature_order]
 
     # make prediction using model
-    prediction = model.predict(transformed_input)
+    prediction = load_model.predict(transformed_input)
 
     # return prediction in USD rounded to the penny
     return np.exp(prediction[0]).round(2)
@@ -110,9 +106,7 @@ if __name__ == "__main__":
     user_input = [
         "Apartment",        # property_type
         "Entire home/apt",  # room_type
-        3,                  # accommodates
         1.0,                # bathrooms
-        "Real Bed",         # bed_type
         "strict",           # cancellation_policy
         True,               # cleaning_fee
         "NYC",              # city
