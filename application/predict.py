@@ -1,5 +1,7 @@
 """Functions to make model predictions"""
 
+from datetime import datetime
+
 import numpy as np
 import pandas as pd
 
@@ -86,8 +88,15 @@ def get_prediction(user_data, model):
     # This also serves as a simple backend data validation so the route returns
     # a value even if someone tries to spoof a data point
     try:
+
+        # Check user data is valid length
         assert len(user_data) == len(
             feature_order), print(f'Expected user_data to have {len(feature_order)} items')
+
+        # Convert host_since into number of days
+        user_data[5] = (datetime.today() -
+                        datetime.strptime(user_data[5], '%Y-%m-%d')
+                        ).days
 
         # dictionary to construct dataframe
         data = {feature: [datum]
@@ -101,8 +110,12 @@ def get_prediction(user_data, model):
 
         # make prediction using model
         prediction = model.predict(transformed_input)
-    except Exception:
+
+    except Exception as e:
         print('-----ERROR IN TRANSFORMING INPUT-----')
+        print("User Data: ", user_data)
+        print(e)
+        # Return 0 so the endpoint still works
         prediction = [0]
 
     # return prediction in USD rounded to the penny
