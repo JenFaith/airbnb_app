@@ -71,6 +71,12 @@ def cleaned_dataframe(df):
     # Convert "host_since" from object to int
     df['host_since'] = df['host_since'].astype('int')
     
+    # True/false columns to 1/0
+    df['cleaning_fee']=np.where(df['cleaning_fee']==True, 1, 0)
+    df['host_has_profile_pic']=np.where(df['host_has_profile_pic']=='t', 1, 0)
+    df['host_identity_verified']=np.where(df['host_identity_verified']=='t', 1, 0)
+    df['instant_bookable']=np.where(df['instant_bookable']=='t', 1, 0)
+    
     
     #drop columns with low correlation
     df.drop(columns=['latitude', 'longitude', 'accommodates', 'Smoke detector', 'number_of_reviews', 'Hangers','First aid kit', 'Elevator in building', 'Essentials', 'zipcode', 'thumbnail_url', 'description', 'name'], axis=1, inplace=True)
