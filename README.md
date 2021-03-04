@@ -45,8 +45,9 @@ https://www.linkedin.com/in/stephen-lupsha-b60136140/<br>
 https://github.com/StephenSpicer<br>
 
 **Jennifer Faith**<br>
-linkedin.com/in/jennifer-faith<br>
+www.linkedin.com/in/jennifer-faith<br>
 https://github.com/JenFaith<br>
+
 
 **Filipe**<br>
 www.linkedin.com/in/fcollares<br>
