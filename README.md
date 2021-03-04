@@ -1,4 +1,4 @@
-### Right Price Airbnb
+# Right Price Airbnb
 
 Application to predict Airbnb prices.
 
