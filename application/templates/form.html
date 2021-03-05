@@ -13,7 +13,7 @@
               <input class="w3-input w3-border" type="number" name="beds" min="0" max="16" step="1" value="0" required>
             </div>
         </div>
-        <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-row-padding" style="margin:6px -16px;">
             <div class="w3-half w3-margin-bottom">
               <label>Bathrooms</label>
               <input class="w3-input w3-border" type="number" name="bathrooms" min="0" max="6" step="0.5" value="0">
@@ -23,7 +23,7 @@
             <input class="w3-input w3-border" type="number" name="review_rating" min="0" max="100" step="10" value="0">
             </div>
         </div>
-        <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-row-padding" style="margin:6px -16px;">
             <div class="w3-half w3-margin-bottom">
               <label>Host Since (YYYY/MM/DD)</label>
               <input class="w3-input w3-border" type="date" id="start" name="host_since" value="2021-01-01">
@@ -39,7 +39,7 @@
                 </select>
             </div>
         </div>
-        <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-row-padding" style="margin:6px -16px;">
             <div class="w3-half w3-margin-bottom">
                 <label for="city">City</label>
                 <select class="w3-input w3-border" id="city" name="city">
@@ -92,7 +92,7 @@
                 </select><br>
             </div>
         </div>
-        <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-row-padding" style="margin:0px -16px;">
             <div class="w3-half w3-margin-bottom">
                 <label for="room_type">Room Type</label>
                 <select class="w3-input w3-border" id="room_type" name="room_type">
@@ -102,61 +102,112 @@
                 </select><br>
             </div>
         </div>
+
+<!-- Checkbox section starts here -->
+      <div>
         <div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
-                <input type="checkbox" value="instant" name="feature_checkbox">Instant Booking   
+              <input type="checkbox" value="instant" name="feature_checkbox">Instant Booking   
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="host_pic" name="feature_checkbox">Host Profile Picture   
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="host_id" name="feature_checkbox">Host ID Verified   
-            <label class="checkbox-inline">
-              <input type="checkbox" value="cleaning_fee" name="feature_checkbox">Cleaning Fee   
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
-              <input type="checkbox" value="Wireless Internet" name="feature_checkbox">Wi-Fi    
+              <input type="checkbox" value="cleaning_fee" name="feature_checkbox">Cleaning Fee
             </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" value="tv" name="feature_checkbox">TV   
-            </label>
-                </div>
+          </div>
+        </div>
+
         <div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
-                <input type="checkbox" value="Air conditioning" name="feature_checkbox">A/C
+              <input type="checkbox" value="Wireless Internet" name="feature_checkbox">Wi-Fi     
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+                <input type="checkbox" value="tv" name="feature_checkbox">TV  
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Air conditioning" name="feature_checkbox">A/C 
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="Kitchen" name="feature_checkbox">Kitchen
             </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="Heating" name="feature_checkbox">Heating
-            <label class="checkbox-inline">
-              <input type="checkbox" value="Family/kid friendly" name="feature_checkbox">Family Friendly
-            </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="Hair dryer" name="feature_checkbox">Hair Dryer
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" value="Cable TV" name="feature_checkbox">Cable TV   
-            </label>
-                </div>
+          </div>
+        </div>
+
         <div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
-                <input type="checkbox" value="Iron" name="feature_checkbox">Iron
+              <input type="checkbox" value="Heating" name="feature_checkbox">Heating  
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Family/kid friendly" name="feature_checkbox">Family Friendly 
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Cable TV" name="feature_checkbox">Cable TV   
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Kitchen" name="feature_checkbox">Kitchen
+            </label>
+        </div>
+
+
+        <div>
+          <div class="w3-quarter w3-margin-bottom">
+            <label class="checkbox-inline">
+              <input type="checkbox" value="Iron" name="feature_checkbox">Iron 
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="Shampoo" name="feature_checkbox">Shampoo
             </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
-              <input type="checkbox" value="fire_ext" name="feature_checkbox">Fire Extinguisher
+              <input type="checkbox" value="fire_ext" name="feature_checkbox">Fire Extinguisher 
+            </label>
+          </div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="laptop_friendly" name="feature_checkbox">Laptop Friendly
             </label>
+          </div>
+        </div>
+
+
+        <div>
+          <div class="w3-quarter w3-margin-bottom">
             <label class="checkbox-inline">
               <input type="checkbox" value="Indoor fireplace" name="feature_checkbox">Indoor Fireplace
             </label>
-                </div>
-            <br><br>
-        <button class="w3-button w3-dark-grey" type="SUBMIT"><i class="fa fa-search w3-margin-right"></i> Find Price</button>
+          </div>
+        </div>
+      </div>
+      <button class="w3-button w3-block w3-dark-grey w3-margin-bottom" type="SUBMIT"><i class="fa fa-search w3-margin-left"></i> Find Price</button>
     </form>
+</body>
+<br>
     {% endblock %}

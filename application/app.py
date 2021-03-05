@@ -21,6 +21,10 @@ def create_app():
     @app.route('/')
     def form():
         return render_template('form.html')
+    
+    @app.route('/about')
+    def about():
+        return render_template('about.html')
 
     @app.route('/run_model', methods=['POST', 'GET'])
     def data():
