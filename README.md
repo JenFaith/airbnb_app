@@ -11,7 +11,14 @@ Application to predict Airbnb prices.
 <br>
 
 ## Motivation
-Also here I need some help talking maybe about the data, and initial thoughts on it
+
+Dataset: https://www.kaggle.com/rudymizrahi/airbnb-listings-in-major-us-cities-deloitte-ml
+
+In order to offer the user the best experience of using the application, we transformed the amenities column into binary categories, accessed via checkboxes, in place of text input by the user. See the [Data_Exploration](https://github.com/JenFaith/airbnb_app/blob/main/Data_Exploration.ipynb) notebook for more details regarding the data preparation steps.  
+
+We trained 3 different regression models (Linear Regression, Gradient Boosting Regressor, and Random Forest Regressor) and one [classification model](https://github.com/JenFaith/airbnb_app/blob/main/Classification_Model.ipynb) on the training data, utilizing cross-validation on the `train.csv` data.  
+In agreement with the paper found [here](https://arxiv.org/ftp/arxiv/papers/1805/1805.12101.pdf), the model (`finalized_model.sav`) achieving the best score ($R^2=0.61$) in our experiments is a Random Forest Regressor of 200 trees each with a max depth of 20. Due to model file size considerations, we reduced the number of trees to 131 with max depth 10. The difference in model accuracy is negligible.
+
 <br><br>
 
 ## Tech/framework used
